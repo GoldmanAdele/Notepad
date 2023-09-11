@@ -1,0 +1,21 @@
+name: deploy-notepad
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SSH
+        uses: ErenKrt/ssh-push@main
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          private_key: ${{ secrets.SSH_SECRET }}
+          source: "."
+          #exclude: |
+          #  *.exe
+          #scripts: |
+          #  cd /home/eren/test && unzip myZipname.zip && rm -r *.zip
+          #  cat /home/eren/test/index.js
+          #zipname: "myZipname.zip"
+          outdir: "/home/ubuntu/workspace/"
