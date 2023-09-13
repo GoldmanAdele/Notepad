@@ -12,6 +12,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           private_key: ${{ secrets.SSH_SECRET }}
           source: "."
+          port: 22
           #exclude: |
           #  *.exe
           #scripts: |
