@@ -6,17 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: SSH
-        uses: ErenKrt/ssh-push@main
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          private_key: ${{ secrets.SSH_SECRET }}
-          source: "."
+          key: ${{ secrets.SSH_SECRET }}
           port: 22
-          #exclude: |
-          #  *.exe
-          #scripts: |
-          #  cd /home/eren/test && unzip myZipname.zip && rm -r *.zip
-          #  cat /home/eren/test/index.js
-          #zipname: "myZipname.zip"
-          outdir: "/home/ubuntu/workspace/Notepad"
+          script: whoami
+          
